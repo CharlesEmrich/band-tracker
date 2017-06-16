@@ -1,0 +1,7 @@
+## Specifications
+
+| Behavior | Input | Output |
+| - | - | - |
+|  |  |  |
+|  |  |  |
+|  |  |  |
