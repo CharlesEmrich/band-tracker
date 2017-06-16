@@ -1,0 +1,28 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<form action="/bands/edit/@Model.Id" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="name">Band Name:</label>
+  <input type="text" name="name" placeholder="@Model.Name">
+  <button type="submit" name="button">Change Name</button>
+</form>
+
+<h3>Venues:</h3>
+@if(Model.GetVenues().Count > 0)
+{
+  <ul>
+    @foreach(var venue in Model.GetVenues())
+    {
+      <li><a href="/venues/venue.Id">venue.Name</a></li>
+    }
+  </ul>
+}
+
+<form action="/bands/@Model.Id/new" method="post">
+  <label for="name">Venue Name:</label>
+  <input type="text" name="name">
+  <button type="submit" name="button">Add New Venue For This Band</button>
+</form>
