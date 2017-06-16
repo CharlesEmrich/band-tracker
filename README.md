@@ -17,7 +17,9 @@ A simple app for managing a database of bands and their venues played.
 | - | - | - |
 | User views a band. | Click bandname. | Show list of venues played by the band and option to add a venue. |
 | User views a venue. | Click venue name. | Show list of bands who've played that venue and option to add one. |
-|  |  |  |
+| User adds a venue to a band. | Fill out and submit form. | Show detail view for that band, now listing that venue. |
+| Users adds a venue to a band. | Fill out and submit form. | Show detail view for that venue, now listing that band. |
+| User decides to view a random band | Click "Show me a random band." | Show detail view for that band. |
 
 ### Known Bugs
 There are no known bugs at this time.

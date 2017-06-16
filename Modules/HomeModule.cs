@@ -59,6 +59,11 @@ namespace MusicianTracker
         Venue.Find(parameters.id).AddBand(newBand);
         return View["venue-details.cshtml", Venue.Find(parameters.id)];
       };
+      Patch["/bands/edit/{id}"] = parameters => {
+        Band toUpdate = Band.Find(parameters.id);
+        toUpdate.Update(Request.Form["name"]);
+        return View["band-details.cshtml", toUpdate];
+      };
     }
   }
 }
