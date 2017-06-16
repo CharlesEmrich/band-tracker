@@ -11,6 +11,12 @@ namespace MusicianTracker
       Get["/"] = _ => {
         return View["index.cshtml"];
       };
+      Get["/bands"] = _ => {
+        return View["bands.cshtml", Band.GetAll()];
+      };
+      Get["/venues"] = _ => {
+        return View["venues.cshtml", Venue.GetAll()];
+      };
       // Get["/clients"] = _ => {
       //   Dictionary<string, object> model = new Dictionary<string, object> {{"clients", Client.GetAll()}, {"stylists", Stylist.GetAll()}};
       //   return View["clients.cshtml", model];
@@ -31,12 +37,11 @@ namespace MusicianTracker
       //   Stylist foundStylist = Stylist.Find(parameters.id);
       //   return View["stylist-details.cshtml", foundStylist];
       // };
-      // Post["/clients/new"] = _ => {
-      //   int newStylistId = Request.Form["stylist-id"];
-      //   Client newClient = new Client(Request.Form["client-name"], newStylistId);
-      //   newClient.Save();
-      //   return View["client-details.cshtml", newClient];
-      // };
+      Post["/bands/new"] = _ => {
+        Band newBand = new Band(Request.Form["name"]);
+        newBand.Save();
+        return View["bands.cshtml", Band.GetAll()];
+      };
       // Post["/stylists/new"] = _ => {
       //   Stylist newStylist = new Stylist(Request.Form["stylist-name"]);
       //   newStylist.Save();
