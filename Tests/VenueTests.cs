@@ -80,7 +80,7 @@ namespace BandTracker
       Venue testCase2 = new Venue("Doug Fir Lounge");
       testCase2.Save();
       //Act
-      Venue.Delete(testCase1.GetId());
+      testCase1.Delete();
       int actual = Venue.GetAll().Count;
       int expected = 1;
       //Assert
