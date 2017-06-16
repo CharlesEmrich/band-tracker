@@ -105,11 +105,11 @@ namespace MusicianTracker
     public void Venue_AddBand_AddsBandAssociationToVenuesBands()
     {
       //Arrange
-      Band testBand1 = new Band("Phantom Tollbooth");
+      Band testBand1 = new Band("Gorillaz");
       testBand1.Save();
-      Band testBand2 = new Band("The Purity Myth");
+      Band testBand2 = new Band("The Mountain Goats");
       testBand2.Save();
-      Venue testVenue = new Venue("Roxane Gay");
+      Venue testVenue = new Venue("Mississippi Studios");
       testVenue.Save();
       //Act
       testVenue.AddBand(testBand1);

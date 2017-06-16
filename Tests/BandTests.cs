@@ -101,5 +101,23 @@ namespace MusicianTracker
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void Venue_AddBand_AddsBandAssociationToVenuesBands()
+    {
+      //Arrange
+      Venue testVenue1 = new Venue("Holocene");
+      testVenue1.Save();
+      Venue testVenue2 = new Venue("The Roseland");
+      testVenue2.Save();
+      Band testBand = new Band("Surfer Blood");
+      testBand.Save();
+      //Act
+      testVenue.AddBand(testVenue1);
+      testVenue.AddBand(testVenue2);
+      List<Venue> actual = testBand.GetVenues();
+      List<Venue> expected = new List<Venue> {testVenue1, testVenue2};
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
