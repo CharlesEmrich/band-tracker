@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using BandTracker.Objects;
+using MusicianTracker.Objects;
 
-namespace BandTracker
+namespace MusicianTracker
 {
-  [Collection("BandTrackerTests")]
+  [Collection("MusicianTrackerTests")]
   public class BandTest : IDisposable
   {
     public BandTest()

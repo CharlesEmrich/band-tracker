@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
 
-namespace BandTracker.Objects
+namespace MusicianTracker.Objects
 {
   public class Band
   {
