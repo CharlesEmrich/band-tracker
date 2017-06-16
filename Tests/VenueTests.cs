@@ -101,5 +101,23 @@ namespace BandTracker
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void Venue_AddBand_AddsBandAssociationToVenuesBands()
+    {
+      //Arrange
+      Band testBand1 = new Band("Phantom Tollbooth");
+      testBand1.Save();
+      Band testBand2 = new Band("The Purity Myth");
+      testBand2.Save();
+      Venue testVenue = new Venue("Roxane Gay");
+      testVenue.Save();
+      //Act
+      testVenue.AddBand(testBand1);
+      testVenue.AddBand(testBand2);
+      List<Band> actual = testVenue.GetBands();
+      List<Band> expected = new List<Band> {testBand1, testBand2};
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
