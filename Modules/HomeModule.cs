@@ -1,5 +1,6 @@
 using Nancy;
 using MusicianTracker.Objects;
+using System;
 using System.Collections.Generic;
 
 namespace MusicianTracker
@@ -17,10 +18,6 @@ namespace MusicianTracker
       Get["/venues"] = _ => {
         return View["venues.cshtml", Venue.GetAll()];
       };
-      // Get["/clients/edit/{id}"] = parameters => {
-      //   Client foundClient = Client.Find(parameters.id);
-      //   return View["client-edit.cshtml", foundClient];
-      // };
       Get["/bands/{id}"] = parameters => {
         Band foundBand = Band.Find(parameters.id);
         return View["band-details.cshtml", foundBand];
@@ -29,9 +26,17 @@ namespace MusicianTracker
         Venue foundVenue = Venue.Find(parameters.id);
         return View["venue-details.cshtml", foundVenue];
       };
+      Get["/bands/random"] = _ => {
+        List<Band> allBands = Band.GetAll();
+        int rnd = new Random().Next(0, allBands.Count);
+        Band randomBand = allBands[rnd];
+        return View["band-details.cshtml", randomBand];
+      };
       Post["/bands/new"] = _ => {
-        Band newBand = new Band(Request.Form["name"]);
-        newBand.Save();
+        if (Request.Form["name"] != "") {
+          Band newBand = new Band(Request.Form["name"]);
+          newBand.Save();
+        }
         return View["bands.cshtml", Band.GetAll()];
       };
       Post["/bands/{id}/new"] = parameters => {
@@ -42,8 +47,10 @@ namespace MusicianTracker
         return View["band-details.cshtml", Band.Find(parameters.id)];
       };
       Post["/venues/new"] = _ => {
-        Venue newVenue = new Venue(Request.Form["name"]);
-        newVenue.Save();
+        if (Request.Form["name"] != "") {
+          Venue newVenue = new Venue(Request.Form["name"]);
+          newVenue.Save();
+        }
         return View["venues.cshtml", Venue.GetAll()];
       };
       Post["/venues/{id}/new"] = parameters => {
@@ -52,22 +59,6 @@ namespace MusicianTracker
         Venue.Find(parameters.id).AddBand(newBand);
         return View["venue-details.cshtml", Venue.Find(parameters.id)];
       };
-      // Post["/stylists/new"] = _ => {
-      //   Stylist newStylist = new Stylist(Request.Form["stylist-name"]);
-      //   newStylist.Save();
-      //   return View["stylist-details.cshtml", newStylist];
-      // };
-      // Patch["clients/edit/{id}"] = parameters => {
-      //   Client foundClient = Client.Find(parameters.id);
-      //   foundClient.Update(Request.Form["client-name"]);
-      //   return View["client-details.cshtml", foundClient];
-      // };
-      // Delete["clients/delete/{id}"] = parameters => {
-      //   Dictionary<string, object> model = new Dictionary<string, object> {{"clients", Client.GetAll()}, {"stylists", Stylist.GetAll()}};
-      //   Client foundClient = Client.Find(parameters.id);
-      //   Client.Delete(foundClient.GetId());
-      //   return View["index.cshtml", model];
-      // };
     }
   }
 }
