@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System;
 
 namespace MusicianTracker.Objects
@@ -11,8 +12,9 @@ namespace MusicianTracker.Objects
 
     public Venue(string name, int id = 0)
     {
+      string titleCase = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(name);
       Id = id;
-      Name = name;
+      Name = titleCase;
     }
     public override bool Equals(System.Object otherVenue)
     {
