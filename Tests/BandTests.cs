@@ -17,6 +17,7 @@ namespace MusicianTracker
     public void Dispose()
     {
       Band.DeleteAll();
+      Venue.DeleteAll();
     }
     [Fact]
     public void Band_Equal_ReturnsTrueForIdenticalObjects()
@@ -112,8 +113,8 @@ namespace MusicianTracker
       Band testBand = new Band("Surfer Blood");
       testBand.Save();
       //Act
-      testVenue.AddBand(testVenue1);
-      testVenue.AddBand(testVenue2);
+      testBand.AddVenue(testVenue1);
+      testBand.AddVenue(testVenue2);
       List<Venue> actual = testBand.GetVenues();
       List<Venue> expected = new List<Venue> {testVenue1, testVenue2};
       //Assert

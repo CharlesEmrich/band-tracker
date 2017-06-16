@@ -16,6 +16,7 @@ namespace MusicianTracker
     }
     public void Dispose()
     {
+      Band.DeleteAll();
       Venue.DeleteAll();
     }
     [Fact]

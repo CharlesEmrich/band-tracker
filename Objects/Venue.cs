@@ -54,7 +54,6 @@ namespace MusicianTracker.Objects
         conn.Close();
       }
     }
-
     public static List<Venue> GetAll()
     {
       List<Venue> allVenues = new List<Venue>{};
@@ -80,7 +79,6 @@ namespace MusicianTracker.Objects
       }
       return allVenues;
     }
-
     public static Venue Find(int id)
     {
       SqlConnection conn = DB.Connection();
@@ -112,7 +110,6 @@ namespace MusicianTracker.Objects
       }
       return foundVenue;
     }
-
     public void Update(string newName)
     {
       SqlConnection conn = DB.Connection();
@@ -162,7 +159,6 @@ namespace MusicianTracker.Objects
       conn.Close();
       }
     }
-
     public List<Band> GetBands()
     {
       SqlConnection conn = DB.Connection();
