@@ -34,7 +34,7 @@ namespace MusicianTracker
         newBand.Save();
         return View["bands.cshtml", Band.GetAll()];
       };
-      Post["/bands/{id}/new"] = _ => {
+      Post["/bands/{id}/new"] = parameters => {
         //TODO: Make this route and its complementary venue route better at distinuishing new venues and existing ones.
         Venue newVenue = new Venue(Request.Form["name"]);
         newVenue.Save();
@@ -46,7 +46,7 @@ namespace MusicianTracker
         newVenue.Save();
         return View["venues.cshtml", Venue.GetAll()];
       };
-      Post["/venues/{id}/new"] = _ => {
+      Post["/venues/{id}/new"] = parameters => {
         Band newBand = new Band(Request.Form["name"]);
         newBand.Save();
         Venue.Find(parameters.id).AddBand(newBand);
