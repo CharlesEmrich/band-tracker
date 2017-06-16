@@ -86,5 +86,20 @@ namespace BandTracker
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void Venue_DeleteAll_RemovesAllVenuesFromDatabase()
+    {
+      //Arrange
+      Venue testCase1 = new Venue("Aladdin Theatre");
+      testCase1.Save();
+      Venue testCase2 = new Venue("Doug Fir Lounge");
+      testCase2.Save();
+      //Act
+      Venue.DeleteAll();
+      int actual = Venue.GetAll().Count;
+      int expected = 0;
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
